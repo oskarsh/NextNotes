@@ -1,3 +1,8 @@
+// ORIGINAL AUTHOR: https://github.com/roshanrahman 
+// MODIFIED BY: https://github.com/daehruoydeef
+// LICENSE: Apache-2.0
+// DESCRIPTION:  
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +11,8 @@ import 'package:flutter/widgets.dart';
 import 'package:notes/services/sharedPref.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:notes/services/database.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SettingsPage extends StatefulWidget {
   Function(Brightness brightness) changeTheme;
@@ -100,7 +107,19 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                      ),
+                    child: RaisedButton(
+                      child: Text("Press For Home Screen"),
+                      onPressed: () async {
+                        // Create storage
+                        final storage = new FlutterSecureStorage();
+                        // Delete all
+                        await storage.deleteAll();
+                        await NotesDatabaseService.db.flushDb();
+                        Navigator.popUntil(context,
+                            ModalRoute.withName(Navigator.defaultRouteName));
+                      },
+                    ),
+                  ),
                 ],
               ))
             ],

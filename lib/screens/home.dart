@@ -1,3 +1,9 @@
+
+// ORIGINAL AUTHOR: https://github.com/roshanrahman 
+// MODIFIED BY: https://github.com/daehruoydeef
+// LICENSE: Apache-2.0
+// DESCRIPTION:  
+
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
@@ -8,10 +14,10 @@ import 'package:notes/data/models.dart';
 import 'package:notes/screens/edit.dart';
 import 'package:notes/screens/view.dart';
 import 'package:notes/services/database.dart';
-import 'package:notes/services/notesService.dart';
 import 'settings.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import '../components/cards.dart';
+import 'package:notes/services/cache.dart';
 
 class MyHomePage extends StatefulWidget {
   Function(Brightness brightness) changeTheme;
@@ -20,8 +26,8 @@ class MyHomePage extends StatefulWidget {
     this.changeTheme = changeTheme;
   }
 
-  final String title;
 
+  final String title;
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -36,15 +42,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    NotesDatabaseService.db.init();
     setNotesFromDB();
   }
 
   setNotesFromDB() async {
-    var fetchedApiNotes = await fetchNotes();
+    // serving the locally saved Notes first
     var fetchedNotes = await NotesDatabaseService.db.getNotesFromDB();
     setState(() {
-      notesList = fetchedApiNotes;
+      notesList = fetchedNotes;
     });
   }
 

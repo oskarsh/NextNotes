@@ -1,3 +1,8 @@
+// ORIGINAL AUTHOR: https://github.com/roshanrahman 
+// MODIFIED BY: https://github.com/daehruoydeef
+// LICENSE: Apache-2.0
+// DESCRIPTION:  
+
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';

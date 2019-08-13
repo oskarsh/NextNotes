@@ -1,6 +1,13 @@
+// ORIGINAL AUTHOR: https://github.com/roshanrahman 
+// MODIFIED BY: https://github.com/daehruoydeef
+// LICENSE: Apache-2.0
+// DESCRIPTION:  
+
+
 import 'package:flutter/material.dart';
 import 'package:notes/services/sharedPref.dart';
 import 'screens/home.dart';
+import 'screens/login.dart';
 import 'data/theme.dart';
 
 
@@ -22,10 +29,11 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: theme,
-      home: MyHomePage(title: 'Home', changeTheme: setTheme),
+      home: Login(changeTheme: setTheme,),
     );
   }
 

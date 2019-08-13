@@ -1,3 +1,9 @@
+// ORIGINAL AUTHOR: https://github.com/roshanrahman 
+// MODIFIED BY: https://github.com/daehruoydeef
+// LICENSE: Apache-2.0
+// DESCRIPTION:  
+
+
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import '../data/models.dart';
@@ -44,6 +50,19 @@ class NotesDatabaseService {
     return notesList;
   }
 
+    Future<List<NotesModel>> getNoteWithId(noteId) async {
+    final db = await database;
+    List<NotesModel> notesList = [];
+    List<Map> maps = await db.query('Notes', where: '_id = ?', whereArgs: [noteId],
+        columns: ['_id', 'title', 'content', 'date', 'isImportant']);
+    if (maps.length > 0) {
+      maps.forEach((map) {
+        notesList.add(NotesModel.fromMap(map));
+      });
+    }
+    return notesList;
+  }
+
   updateNoteInDB(NotesModel updatedNote) async {
     final db = await database;
     await db.update('Notes', updatedNote.toMap(),
@@ -67,5 +86,21 @@ class NotesDatabaseService {
     newNote.id = id;
     print('Note added: ${newNote.title} ${newNote.content}');
     return newNote;
+  }
+
+    Future<NotesModel> addNoteInDBWithId(NotesModel newNote) async {
+    final db = await database;
+    if (newNote.title.trim().isEmpty) newNote.title = 'Untitled Note';
+    await db.transaction((transaction) {
+      transaction.rawInsert(
+          'INSERT into Notes(_id ,title, content, date, isImportant) VALUES ( "${newNote.id}", "${newNote.title}", "${newNote.content}", "${newNote.date.toIso8601String()}", ${newNote.isImportant == true ? 1 : 0});');
+    });
+    print('Note added: ${newNote.title} ${newNote.content}');
+    return newNote;
+  }
+
+  void flushDb() async {
+    final db = await database;
+    db.delete("Notes");
   }
 }
