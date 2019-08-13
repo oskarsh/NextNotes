@@ -30,7 +30,7 @@ class _LoginState extends State<Login> {
     checkLoggedIn();
   }
 
-  void checkLoggedIn() async{
+  void checkLoggedIn() async {
     final storage = new FlutterSecureStorage();
     storage.read(key: "password").then((value) {
       if (value != null) {
@@ -61,21 +61,26 @@ class _LoginState extends State<Login> {
   _showAuthOrApp(
       context, emailField, passwordField, nextcloudAdressField, loginButton) {
     if (!_loggedIn) {
-      return (ListView(
-        shrinkWrap: true,
+      return (Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          Text(
-            "NextNotes",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontFamily: 'ZillaSlab',
-                fontSize: 42,
-                fontWeight: FontWeight.w700,
-                color: Colors.blue),
+          Container(
+            height: 30,
+          ),
+          Container(
+            child: Text(
+              "NextNotes",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontFamily: 'ZillaSlab',
+                  fontSize: 42,
+                  fontWeight: FontWeight.w700,
+                  color: Theme.of(context).primaryColor),
+            ),
           ),
           Container(
               alignment: Alignment.center,
-              height: 350,
+              height: 340,
               padding: const EdgeInsets.all(30.0),
               margin: const EdgeInsets.all(30.0),
               decoration: new BoxDecoration(
@@ -102,7 +107,10 @@ class _LoginState extends State<Login> {
         ],
       ));
     } else {
-      return(MyHomePage(title: "home", changeTheme: widget.changeTheme,));
+      return (MyHomePage(
+        title: "home",
+        changeTheme: widget.changeTheme,
+      ));
       // Navigator.push(
       //     context,
       //     MaterialPageRoute(
@@ -158,7 +166,7 @@ class _LoginState extends State<Login> {
     final loginButton = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
-      color: Color(0xff01A0C7),
+      color: Theme.of(context).primaryColor,
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
