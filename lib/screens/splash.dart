@@ -1,9 +1,3 @@
-
-// AUTHOR: https://github.com/daehruoydeef
-// LICENSE: Apache-2.0
-// DESCRIPTION:  
-
-
 import 'dart:async';
 import 'dart:io';
 
@@ -29,7 +23,6 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
   bool _isLoading = true;
-  String test = "TEST";
 
   @override
   void initState() {
@@ -42,7 +35,8 @@ class _SplashState extends State<Splash> {
   syncNextcloud() async {
     print("getting called");
     // fetching notes with NotesService from Nextcloud
-    fetchNotes().then((notes)  {
+    fetchNotes().then((notes) {
+      print(notes);
       for (var note in notes) {
         NotesDatabaseService.db.addNoteInDBWithId(note);
       }
@@ -50,7 +44,6 @@ class _SplashState extends State<Splash> {
         _isLoading = false;
       });
     });
-
   }
 
   Widget _loadingView(context) {
@@ -59,13 +52,33 @@ class _SplashState extends State<Splash> {
     if (_isLoading) {
       return Loading(indicator: BallPulseIndicator(), size: 100.0);
     } else {
-      return RaisedButton(onPressed: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => MyHomePage(
-                    title: "Home", changeTheme: widget.changeTheme)));
-      });
+      return (Center(
+          child: Column(
+        children: <Widget>[
+          Text("Syncing done"),
+          Material(
+            elevation: 18.0,
+            borderRadius: BorderRadius.circular(30.0),
+            color: Color(0xff01A0C7),
+            clipBehavior: Clip.antiAlias, // Add This
+            child: MaterialButton(
+              minWidth: 200.0,
+              height: 35,
+              padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+              color: Color(0xff01A0C7),
+              child: new Text('Explore the App',
+                  style: new TextStyle(fontSize: 16.0, color: Colors.white)),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MyHomePage(
+                            title: "Home", changeTheme: widget.changeTheme)));
+              },
+            ),
+          )
+        ],
+      )));
     }
   }
 
@@ -73,6 +86,7 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
+          height: MediaQuery.of(context).size.height,
             alignment: Alignment.center, child: _loadingView(context)));
   }
 }
