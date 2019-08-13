@@ -43,7 +43,6 @@ class _SplashState extends State<Splash> {
     print("getting called");
     // fetching notes with NotesService from Nextcloud
     fetchNotes().then((notes)  {
-      print(notes);
       for (var note in notes) {
         NotesDatabaseService.db.addNoteInDBWithId(note);
       }

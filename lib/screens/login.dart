@@ -1,7 +1,6 @@
-
 // AUTHOR: https://github.com/daehruoydeef
 // LICENSE: Apache-2.0
-// DESCRIPTION:  
+// DESCRIPTION:
 
 import 'dart:io';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -24,20 +23,22 @@ class _LoginState extends State<Login> {
   String _username;
   String _password;
   String _nxadress;
-  bool _loggedIn = false;
+  bool _loggedIn = true;
 
   @override
   void initState() {
     checkLoggedIn();
   }
 
-  void checkLoggedIn() {
+  void checkLoggedIn() async{
     final storage = new FlutterSecureStorage();
-     storage.read(key: "password").then((value) {
-       print(value);
-      //  setState(() {
-      //    _loggedIn = true;
-      //  });
+    storage.read(key: "password").then((value) {
+      print(value);
+      // if (value != null) {
+      //   setState(() {
+      //     _loggedIn = true;
+      //   });
+      // }
     });
   }
 
@@ -58,64 +59,64 @@ class _LoginState extends State<Login> {
                 )));
   }
 
-  _showAuthOrApp(context, emailField, passwordField, nextcloudAdressField, loginButton) {
-    if (! _loggedIn) {
-      return(
-      ListView(
-          shrinkWrap: true,
-          children: <Widget>[
-            Text(
-              "NextNotes",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontFamily: 'ZillaSlab',
-                  fontSize: 42,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.blue),
-            ),
-            Container(
-                alignment: Alignment.center,
-                height: 350,
-                padding: const EdgeInsets.all(30.0),
-                margin: const EdgeInsets.all(30.0),
-                decoration: new BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: new BorderRadius.all(Radius.circular(10)),
-                  boxShadow: [
-                    new BoxShadow(
-                      color: Colors.grey,
-                      blurRadius: 10,
-                    )
-                  ],
-                ),
-                child: Column(
-                  children: <Widget>[
-                    emailField,
-                    SizedBox(height: 15),
-                    passwordField,
-                    SizedBox(height: 15),
-                    nextcloudAdressField,
-                    SizedBox(height: 25),
-                    loginButton
-                  ],
-                ))
-          ],
-      )
-        );
+  _showAuthOrApp(
+      context, emailField, passwordField, nextcloudAdressField, loginButton) {
+    if (!_loggedIn) {
+      return (ListView(
+        shrinkWrap: true,
+        children: <Widget>[
+          Text(
+            "NextNotes",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontFamily: 'ZillaSlab',
+                fontSize: 42,
+                fontWeight: FontWeight.w700,
+                color: Colors.blue),
+          ),
+          Container(
+              alignment: Alignment.center,
+              height: 350,
+              padding: const EdgeInsets.all(30.0),
+              margin: const EdgeInsets.all(30.0),
+              decoration: new BoxDecoration(
+                color: Colors.white,
+                borderRadius: new BorderRadius.all(Radius.circular(10)),
+                boxShadow: [
+                  new BoxShadow(
+                    color: Colors.grey,
+                    blurRadius: 10,
+                  )
+                ],
+              ),
+              child: Column(
+                children: <Widget>[
+                  emailField,
+                  SizedBox(height: 15),
+                  passwordField,
+                  SizedBox(height: 15),
+                  nextcloudAdressField,
+                  SizedBox(height: 25),
+                  loginButton
+                ],
+              ))
+        ],
+      ));
     } else {
       Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => MyHomePage(
-                  title: "Home",
-                  changeTheme: widget.changeTheme,
-                )));
+          context,
+          MaterialPageRoute(
+              builder: (context) => MyHomePage(
+                    title: "Home",
+                    changeTheme: widget.changeTheme,
+                  )));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    TextStyle style = TextStyle(fontFamily: 'ZillaSlab', fontSize: 20.0, color: Colors.black);
+    TextStyle style =
+        TextStyle(fontFamily: 'ZillaSlab', fontSize: 20.0, color: Colors.black);
     final emailField = TextField(
       obscureText: false,
       style: style,
@@ -172,7 +173,7 @@ class _LoginState extends State<Login> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Center(
-         child: _showAuthOrApp(context, emailField, passwordField, nextcloudAdressField, loginButton)
-            ));
+            child: _showAuthOrApp(context, emailField, passwordField,
+                nextcloudAdressField, loginButton)));
   }
 }

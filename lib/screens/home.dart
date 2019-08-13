@@ -17,7 +17,6 @@ import 'package:notes/services/database.dart';
 import 'settings.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import '../components/cards.dart';
-import 'package:notes/services/cache.dart';
 
 class MyHomePage extends StatefulWidget {
   Function(Brightness brightness) changeTheme;
