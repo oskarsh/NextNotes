@@ -26,8 +26,10 @@ Future fetchNotes() async {
   for (var note in notes) {
     print("NOTE INCOMING");
     var content = note["content"];
-    // var contentWords = note["content"].split("\n");
-    // String content = contentWords.sublist(1);
+    var contentWords = content.split("\n");
+    content = contentWords.sublist(1);
+    content = content.join(" ");
+    print(content);
     notesList.add(new NotesModel(
         content: content,
         title: note["title"],

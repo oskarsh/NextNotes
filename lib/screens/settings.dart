@@ -114,7 +114,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         final storage = new FlutterSecureStorage();
                         // Delete all
                         await storage.deleteAll();
-                        await NotesDatabaseService.db.flushDb();
+                        NotesDatabaseService.db.flushDb();
                         Navigator.popUntil(context,
                             ModalRoute.withName(Navigator.defaultRouteName));
                       },

@@ -23,7 +23,7 @@ class _LoginState extends State<Login> {
   String _username;
   String _password;
   String _nxadress;
-  bool _loggedIn = true;
+  bool _loggedIn = false;
 
   @override
   void initState() {
@@ -33,12 +33,11 @@ class _LoginState extends State<Login> {
   void checkLoggedIn() async{
     final storage = new FlutterSecureStorage();
     storage.read(key: "password").then((value) {
-      print(value);
-      // if (value != null) {
-      //   setState(() {
-      //     _loggedIn = true;
-      //   });
-      // }
+      if (value != null) {
+        setState(() {
+          _loggedIn = true;
+        });
+      }
     });
   }
 
@@ -103,13 +102,14 @@ class _LoginState extends State<Login> {
         ],
       ));
     } else {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => MyHomePage(
-                    title: "Home",
-                    changeTheme: widget.changeTheme,
-                  )));
+      return(MyHomePage(title: "home", changeTheme: widget.changeTheme,));
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //         builder: (context) => MyHomePage(
+      //               title: "Home",
+      //               changeTheme: widget.changeTheme,
+      //             )));
     }
   }
 
@@ -126,7 +126,7 @@ class _LoginState extends State<Login> {
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           fillColor: Colors.red,
-          hintText: "Email",
+          hintText: "Username",
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
     );
@@ -169,6 +169,15 @@ class _LoginState extends State<Login> {
                 color: Colors.white, fontWeight: FontWeight.bold)),
       ),
     );
+
+    // if (_loggedIn) {
+    //        Navigator.push(
+    //       context,
+    //       MaterialPageRoute(
+    //           builder: (context) => MyHomePage(
+    //                 title: "Home",
+    //                 changeTheme: widget.changeTheme)));
+    // }
 
     return Scaffold(
         backgroundColor: Colors.white,
