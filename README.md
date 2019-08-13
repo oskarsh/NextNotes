@@ -23,9 +23,7 @@
 
 ## Installation
 
-![https://img.shields.io/badge/Download%20for%20Android-%20-green](https://img.shields.io/badge/Download for Android- -green)
-
-![https://img.shields.io/badge/iOS%20coming%20soon-%20-lightgrey](https://img.shields.io/badge/iOS coming soon- -lightgrey)
+![https://img.shields.io/badge/Download%20for%20Android-%20-green](https://img.shields.io/badge/Download%20for%20Android-%20-green)
 
 ## Contribution
 
