@@ -33,9 +33,9 @@ Future fetchNotes() async {
     notesList.add(new NotesModel(
         content: content,
         title: note["title"],
-        date: DateTime.now(),
+        date: new DateTime.fromMillisecondsSinceEpoch(note["modified"] * 1000),
         id: note["id"],
-        isImportant: false));
+        isImportant: note["favourite"]));
   }
   return notesList;
 }
