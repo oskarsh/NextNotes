@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:notes/screens/home.dart';
 import "./home.dart";
 import "./splash.dart";
+import "../components/cards.dart";
 
 class Login extends StatefulWidget {
   Function(Brightness brightness) changeTheme;
@@ -33,7 +34,7 @@ class _LoginState extends State<Login> {
   void checkLoggedIn() async {
     final storage = new FlutterSecureStorage();
     storage.read(key: "password").then((value) {
-      if (value != null) {
+      if (value != null ) {
         setState(() {
           _loggedIn = true;
         });
@@ -42,6 +43,11 @@ class _LoginState extends State<Login> {
   }
 
   void handleLogin() async {
+
+    // force https
+    if (!_nxadress.startsWith("https://")) {
+      _nxadress = "https://" + _nxadress;
+    }
     // Create storage
     final storage = new FlutterSecureStorage();
     // Write value
@@ -59,15 +65,17 @@ class _LoginState extends State<Login> {
   }
 
   _showAuthOrApp(
-      context, emailField, passwordField, nextcloudAdressField, loginButton) {
+      context, usernameField, passwordField, nextcloudAdressField, loginButton) {
     if (!_loggedIn) {
       return (Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Container(
             height: 30,
+            color: Theme.of(context).backgroundColor,
           ),
           Container(
+            color: Theme.of(context).backgroundColor,
             child: Text(
               "NextNotes",
               textAlign: TextAlign.center,
@@ -84,18 +92,17 @@ class _LoginState extends State<Login> {
               padding: const EdgeInsets.all(30.0),
               margin: const EdgeInsets.all(30.0),
               decoration: new BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).backgroundColor, 
                 borderRadius: new BorderRadius.all(Radius.circular(10)),
                 boxShadow: [
                   new BoxShadow(
-                    color: Colors.grey,
                     blurRadius: 10,
                   )
                 ],
               ),
               child: Column(
                 children: <Widget>[
-                  emailField,
+                  usernameField,
                   SizedBox(height: 15),
                   passwordField,
                   SizedBox(height: 15),
@@ -111,86 +118,81 @@ class _LoginState extends State<Login> {
         title: "home",
         changeTheme: widget.changeTheme,
       ));
-      // Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //         builder: (context) => MyHomePage(
-      //               title: "Home",
-      //               changeTheme: widget.changeTheme,
-      //             )));
+    }
+   }
+
+    @override
+    Widget build(BuildContext context) {
+      TextStyle style = TextStyle(
+          fontFamily: 'ZillaSlab', fontSize: 20.0, color: Theme.of(context).primaryTextTheme.button.color);
+
+      final usernameField = TextField(
+        obscureText: false,
+        style: style,
+        autofocus: true,
+        onChanged: (text) {
+          _username = text;
+        },
+        decoration: InputDecoration(
+            contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            hintText: "Username",
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
+      );
+      final passwordField = TextField(
+        obscureText: true,
+        enableInteractiveSelection: true,
+        style: style,
+        onChanged: (text) {
+          _password = text;
+        },
+        decoration: InputDecoration(
+            contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            hintText: "Password",
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)), focusColor: Theme.of(context).accentIconTheme.color,),
+      );
+      final nextcloudAdressField = TextField(
+        obscureText: false,
+        style: style,
+        onChanged: (text) {
+          _nxadress = text;
+        },
+        decoration: InputDecoration(
+            contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            hintText: "Nextcloud Server",
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
+      );
+      final loginButton = Material(
+        elevation: 5.0,
+        borderRadius: BorderRadius.circular(30.0),
+        color: Theme.of(context).primaryColor,
+        child: MaterialButton(
+          minWidth: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          onPressed: handleLogin,
+          child: Text("Login",
+              textAlign: TextAlign.center,
+              style: style.copyWith(
+                  color: Theme.of(context).backgroundColor, fontWeight: FontWeight.bold)),
+        ),
+      );
+
+      // if (_loggedIn) {
+      //        Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //           builder: (context) => MyHomePage(
+      //                 title: "Home",
+      //                 changeTheme: widget.changeTheme)));
+      // }
+
+      return Scaffold(
+          backgroundColor: Theme.of(context).backgroundColor,
+          body: Center(
+              child: _showAuthOrApp(context, usernameField, passwordField,
+                  nextcloudAdressField, loginButton)));
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    TextStyle style =
-        TextStyle(fontFamily: 'ZillaSlab', fontSize: 20.0, color: Colors.black);
-    final emailField = TextField(
-      obscureText: false,
-      style: style,
-      onChanged: (text) {
-        _username = text;
-      },
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          fillColor: Colors.red,
-          hintText: "Username",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
-    );
-    final passwordField = TextField(
-      obscureText: true,
-      enableInteractiveSelection: true,
-      style: style,
-      onChanged: (text) {
-        _password = text;
-      },
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Password",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
-    );
-    final nextcloudAdressField = TextField(
-      obscureText: false,
-      style: style,
-      onChanged: (text) {
-        _nxadress = text;
-      },
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Nextcloud Server",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
-    );
-    final loginButton = Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(30.0),
-      color: Theme.of(context).primaryColor,
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: handleLogin,
-        child: Text("Login",
-            textAlign: TextAlign.center,
-            style: style.copyWith(
-                color: Colors.white, fontWeight: FontWeight.bold)),
-      ),
-    );
-
-    // if (_loggedIn) {
-    //        Navigator.push(
-    //       context,
-    //       MaterialPageRoute(
-    //           builder: (context) => MyHomePage(
-    //                 title: "Home",
-    //                 changeTheme: widget.changeTheme)));
-    // }
-
-    return Scaffold(
-        backgroundColor: Colors.white,
-        body: Center(
-            child: _showAuthOrApp(context, emailField, passwordField,
-                nextcloudAdressField, loginButton)));
-  }
-}

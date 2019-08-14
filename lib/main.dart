@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:notes/services/sharedPref.dart';
 import 'screens/home.dart';
 import 'screens/login.dart';
+import 'screens/splash.dart';
+import 'screens/settings.dart';
 import 'data/theme.dart';
 
 
@@ -29,11 +31,15 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: theme,
-      home: Login(changeTheme: setTheme,),
+      routes: {
+      '/' : (context) => Login(changeTheme: setTheme),
+      '/Splash' : (context) => Splash(changeTheme: setTheme),
+      '/Settings' : (context) => SettingsPage(changeTheme: setTheme), 
+      '/Home': (context) => MyHomePage(changeTheme: setTheme, title: "Home",),
+      }
     );
   }
 

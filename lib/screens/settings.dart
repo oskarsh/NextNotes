@@ -1,13 +1,14 @@
-// ORIGINAL AUTHOR: https://github.com/roshanrahman 
+// ORIGINAL AUTHOR: https://github.com/roshanrahman
 // MODIFIED BY: https://github.com/daehruoydeef
 // LICENSE: Apache-2.0
-// DESCRIPTION:  
+// DESCRIPTION:
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
+import "./login.dart";
 import 'package:notes/services/sharedPref.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -55,7 +56,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     child: Icon(OMIcons.arrowBack)),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 16, top: 36, right: 24),
+                padding: const EdgeInsets.only(left: 16, top: 36, right: 14),
                 child: buildHeaderWidget(context),
               ),
               buildCardWidget(Column(
@@ -63,9 +64,6 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: <Widget>[
                   Text('App Theme',
                       style: TextStyle(fontFamily: 'ZillaSlab', fontSize: 24)),
-                  Container(
-                    height: 20,
-                  ),
                   Row(
                     children: <Widget>[
                       Radio(
@@ -92,36 +90,41 @@ class _SettingsPageState extends State<SettingsPage> {
                       )
                     ],
                   ),
+                  Container(
+                    height: 300,
+                  ),
+                  Container(
+                      width: 500,
+                      child: Material(
+                          elevation: 18.0,
+                          borderRadius: BorderRadius.circular(30.0),
+                          color: Theme.of(context).primaryColor,
+                          clipBehavior: Clip.antiAlias, // Add This
+                          child: MaterialButton(
+                              minWidth: 200.0,
+                              height: 35,
+                              padding:
+                                  EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                              color: Theme.of(context).primaryColor,
+                              child: new Text('Logout',
+                                  style: new TextStyle(
+                                      fontSize: 16.0, color: Colors.white)),
+                              onPressed: () async {
+                                // Create storage
+                                final storage = new FlutterSecureStorage();
+                                // Delete all
+                                await storage.deleteAll();
+                                NotesDatabaseService.db.flushDb();
+
+                                Navigator.pushReplacementNamed(context, '/');
+
+                                // Navigator.popUntil(
+                                //     context,
+                                //     ModalRoute.withName(
+                                //         Navigator.defaultRouteName));
+                              })))
                 ],
               )),
-              buildCardWidget(Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Text('About app',
-                      style: TextStyle(
-                          fontFamily: 'ZillaSlab',
-                          fontSize: 24,
-                          color: Theme.of(context).primaryColor)),
-                  Container(
-                    height: 40,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RaisedButton(
-                      child: Text("Press For Home Screen"),
-                      onPressed: () async {
-                        // Create storage
-                        final storage = new FlutterSecureStorage();
-                        // Delete all
-                        await storage.deleteAll();
-                        NotesDatabaseService.db.flushDb();
-                        Navigator.popUntil(context,
-                            ModalRoute.withName(Navigator.defaultRouteName));
-                      },
-                    ),
-                  ),
-                ],
-              ))
             ],
           ))
         ],

@@ -193,7 +193,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
   Widget buildHeaderWidget(BuildContext context) {
     return Row(
       children: <Widget>[

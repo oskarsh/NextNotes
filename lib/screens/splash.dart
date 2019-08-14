@@ -1,14 +1,10 @@
-import 'dart:async';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:loading/indicator/ball_pulse_indicator.dart';
 import 'package:notes/services/database.dart';
 import './home.dart';
 import 'package:notes/services/notesService.dart';
 import 'package:notes/services/database.dart';
-import 'package:loading/loading.dart';
 import "./home.dart";
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Splash extends StatefulWidget {
   Function(Brightness brightness) changeTheme;
@@ -33,8 +29,7 @@ class _SplashState extends State<Splash> {
   }
 
   syncNextcloud() async {
-    print("getting called");
-    // fetching notes with NotesService from Nextcloud
+    // fetching notes with NtesService from Nextcloud
     fetchNotes().then((notes) {
       print(notes);
       for (var note in notes) {
@@ -47,38 +42,52 @@ class _SplashState extends State<Splash> {
   }
 
   Widget _loadingView(context) {
-    print("is loading");
-    print(_isLoading);
     if (_isLoading) {
-      return Loading(indicator: BallPulseIndicator(), size: 100.0);
+      return (Column(children: <Widget>[
+        
+        SpinKitFoldingCube(
+          color: Theme.of(context).primaryColor,
+          size: 100.0,
+        ),
+      ]));
     } else {
-      return (Center(
+      return (Container(
+          alignment: Alignment.center,
+          color: Colors.green,
           child: Column(
-        children: <Widget>[
-          Text("Syncing done"),
-          Material(
-            elevation: 18.0,
-            borderRadius: BorderRadius.circular(30.0),
-            color: Color(0xff01A0C7),
-            clipBehavior: Clip.antiAlias, // Add This
-            child: MaterialButton(
-              minWidth: 200.0,
-              height: 35,
-              padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-              color: Color(0xff01A0C7),
-              child: new Text('Explore the App',
-                  style: new TextStyle(fontSize: 16.0, color: Colors.white)),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => MyHomePage(
-                            title: "Home", changeTheme: widget.changeTheme)));
-              },
-            ),
-          )
-        ],
-      )));
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "NextNotes is now fully synced, \n go ahead and explore the App",
+                    style: TextStyle(fontFamily: "ZillaSlab"),
+                  )),
+              Material(
+                elevation: 18.0,
+                borderRadius: BorderRadius.circular(30.0),
+                color: Theme.of(context).primaryColor,
+                clipBehavior: Clip.antiAlias, // Add This
+                child: MaterialButton(
+                  minWidth: 200.0,
+                  height: 35,
+                  padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                  color: Theme.of(context).primaryColor,
+                  child: new Text('Explore the App',
+                      style:
+                          new TextStyle(fontSize: 16.0, color: Colors.white)),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MyHomePage(
+                                title: "Home",
+                                changeTheme: widget.changeTheme)));
+                  },
+                ),
+              )
+            ],
+          )));
     }
   }
 
@@ -86,7 +95,8 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-          height: MediaQuery.of(context).size.height,
-            alignment: Alignment.center, child: _loadingView(context)));
+            height: MediaQuery.of(context).size.height,
+            alignment: Alignment.center,
+            child: _loadingView(context)));
   }
 }
