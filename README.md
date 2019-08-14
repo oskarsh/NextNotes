@@ -31,7 +31,7 @@
 
 ## Installation
 
-[![https://github.com/daehruoydeef/NextNotes/releases](https://img.shields.io/badge/-Download%20for%20Android-blue?&logo=android)](https://img.shields.io/badge/-Download%20for%20Android-blue?&logo=android)
+[![https://github.com/daehruoydeef/NextNotes/releases](https://img.shields.io/badge/-Download%20for%20Android-blue?&logo=android)](https://github.com/daehruoydeef/NextNotes/releases)
 
 ## Contribution
 
