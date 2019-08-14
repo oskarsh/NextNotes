@@ -11,7 +11,7 @@
 
 <p align="center">
     <img alt="" title="NextNotes" src="https://img.shields.io/badge/Nextnotes-v.1.0-blue">
-    <img alt="" title="NextNotes" src="https://img.shields.io/badge/license-Apache%202-blue">
+    <img alt="" title="NextNotes" src="https://img.shields.io/badge/License-Apache%202-blue">
     <img alt="" title="NextNotes" src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103">
     <img alt="" title="NextNotes" src="https://img.shields.io/badge/Build%20with-Flutter-blue">
 
@@ -31,7 +31,7 @@
 
 ## Installation
 
-![https://img.shields.io/badge/Download%20for%20Android-%20-green](https://img.shields.io/badge/Download%20for%20Android-%20-green)
+[![https://github.com/daehruoydeef/NextNotes/releases](https://img.shields.io/badge/-Download%20for%20Android-blue?&logo=android)](https://img.shields.io/badge/-Download%20for%20Android-blue?&logo=android)
 
 ## Contribution
 
@@ -44,6 +44,9 @@
 * make changes to code
 
 * Pull request ;)
+
+## Credit
+Thanks to [roshanrahman](https://github.com/roshanrahman) and his [Flutter Notes UI](https://github.com/roshanrahman/flutter-notes-app) for the inspiration and original design.
 
   
 
