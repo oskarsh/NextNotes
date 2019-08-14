@@ -29,13 +29,13 @@ Future fetchNotes() async {
     var contentWords = content.split("\n");
     content = contentWords.sublist(1);
     content = content.join(" ");
-    print(content);
+    print(note["favorite"]);
     notesList.add(new NotesModel(
         content: content,
         title: note["title"],
         date: new DateTime.fromMillisecondsSinceEpoch(note["modified"] * 1000),
         id: note["id"],
-        isImportant: note["favourite"]));
+        isImportant: note["favorite"]));
   }
   return notesList;
 }
