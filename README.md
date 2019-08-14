@@ -11,7 +11,7 @@
 
 <p align="center">
     <img alt="" title="NextNotes" src="https://img.shields.io/badge/Nextnotes-v.1.0-blue">
-    <img alt="" title="NextNotes" src="https://img.shields.io/badge/license-Apache%202-blue">
+    <img alt="" title="NextNotes" src="https://img.shields.io/badge/License-Apache%202-blue">
     <img alt="" title="NextNotes" src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103">
     <img alt="" title="NextNotes" src="https://img.shields.io/badge/Build%20with-Flutter-blue">
 
