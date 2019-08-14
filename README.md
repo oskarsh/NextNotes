@@ -18,8 +18,9 @@
 <p align="center">
 	    <img alt="" title="NextNotes" src="./github_assets/home.jpg" width="300">
 	    <img alt="" title="NextNotes" src="./github_assets/emoji.jpg" width="300">
-
-[![](https://img.shields.io/badge/-Download%20for%20Android-blue?style=for-the-badge&logo=android)](https://github.com/daehruoydeef/NextNotes/releases)	
+<p align="center">
+  			<a href="https://github.com/daehruoydeef/NextNotes/releases">
+	    <img alt="" title="NextNotes" src="https://img.shields.io/badge/-Download%20for%20Android-blue?style=for-the-badge&logo=android" height="30"><a/>
 
 
 ## Features
