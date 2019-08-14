@@ -31,7 +31,7 @@
 
 ## Installation
 
-![https://img.shields.io/badge/Download%20for%20Android-%20-green](https://img.shields.io/badge/Download%20for%20Android-%20-green)
+![https://github.com/daehruoydeef/NextNotes/releases](https://img.shields.io/badge/Download%20for%20Android-%20-green)
 
 ## Contribution
 
