@@ -43,13 +43,16 @@ class _SplashState extends State<Splash> {
 
   Widget _loadingView(context) {
     if (_isLoading) {
-      return (Column(children: <Widget>[
+      return (Container
+      (
+        alignment: Alignment.center,
+        child: Column(children: <Widget>[
         Text("Syncing with Nextcloud this can take up to minute"),
         SpinKitFoldingCube(
           color: Theme.of(context).primaryColor,
           size: 100.0,
         ),
-      ]));
+      ])));
     } else {
       return (Container(
           alignment: Alignment.center,
@@ -75,7 +78,7 @@ class _SplashState extends State<Splash> {
                   color: Theme.of(context).primaryColor,
                   child: new Text('Explore the App',
                       style:
-                          new TextStyle(fontSize: 16.0, color: Colors.white)),
+                          new TextStyle(fontSize: 16.0, color: Theme.of(context).primaryTextTheme.button.color)),
                   onPressed: () {
                     Navigator.push(
                         context,

@@ -108,7 +108,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               color: Theme.of(context).primaryColor,
                               child: new Text('Logout',
                                   style: new TextStyle(
-                                      fontSize: 16.0, color: Colors.white)),
+                                      fontSize: 16.0, color: Theme.of(context).backgroundColor)),
                               onPressed: () async {
                                 // Create storage
                                 final storage = new FlutterSecureStorage();
