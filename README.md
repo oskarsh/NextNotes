@@ -18,7 +18,9 @@
 <p align="center">
 	    <img alt="" title="NextNotes" src="./github_assets/home.jpg" width="300">
 	    <img alt="" title="NextNotes" src="./github_assets/emoji.jpg" width="300">
-
+<br>
+[![https://github.com/daehruoydeef/NextNotes/releases](https://img.shields.io/badge/-Download%20for%20Android-blue?&logo=android)](https://github.com/daehruoydeef/NextNotes/releases)	
+	<br>
 
 ## Features
 
@@ -29,9 +31,6 @@
 * delete Notes
 * mark note as Favourite
 
-## Installation
-
-[![https://github.com/daehruoydeef/NextNotes/releases](https://img.shields.io/badge/-Download%20for%20Android-blue?&logo=android)](https://github.com/daehruoydeef/NextNotes/releases)
 
 ## Contribution
 
@@ -44,6 +43,9 @@
 * make changes to code
 
 * Pull request ;)
+
+## Donation
+
 
 ## Credit
 Thanks to [roshanrahman](https://github.com/roshanrahman) and his [Flutter Notes UI](https://github.com/roshanrahman/flutter-notes-app) for the inspiration and original design.
