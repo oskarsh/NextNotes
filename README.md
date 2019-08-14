@@ -43,9 +43,7 @@
 
 * make changes to code
 
-* Pull request ;)
-
-## Donation
+* Pull request 
 
 
 ## Credit
