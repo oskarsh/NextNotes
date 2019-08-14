@@ -1,6 +1,8 @@
 <p align="center">
-    <img alt="NextNotes" title="NextNotes" src="./github_assets/nextnotesicon.png" width="250">
-</p>
+  <img alt="NextNotes" title="NextNotes" src="./github_assets/nextnotesicon.png" height="150">
+
+
+
 <h1 align="center"> NextNotes </h1> <br>
 <p align="center">
    A free, open-source notes app that syncs with Nextcloud Notes
@@ -12,6 +14,12 @@
     <img alt="" title="NextNotes" src="https://img.shields.io/badge/license-Apache%202-blue">
     <img alt="" title="NextNotes" src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103">
     <img alt="" title="NextNotes" src="https://img.shields.io/badge/Build%20with-Flutter-blue">
+
+<p align="center">
+	    <img alt="" title="NextNotes" src="./github_assets/home.jpg" width="300">
+	    <img alt="" title="NextNotes" src="./github_assets/emoji.jpg" width="300">
+
+
 ## Features
 
 * Out of the Box Nextcloud Notes Sync
