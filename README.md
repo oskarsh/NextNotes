@@ -45,6 +45,9 @@
 
 * Pull request ;)
 
+Credit
+Thanks to roshanrahman and his [Flutter Notes UI](https://github.com/roshanrahman/flutter-notes-app) for the inspiration and original design.
+
   
 
   
