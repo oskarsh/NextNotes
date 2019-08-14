@@ -7,7 +7,7 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import "package:notes/data/models.dart";
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
+import "../services/database.dart";
 // Create storage
 final storage = new FlutterSecureStorage();
 
@@ -47,9 +47,17 @@ void createNewNote(note) async {
   String basicAuth =
       'Basic ' + base64Encode(utf8.encode('$username:$password'));
   String content = note.title + '\n' + note.content;
+  print("NOTEID");
+  print(note.id);
 
-  await post(nxadress + '/index.php/apps/notes/api/v0.2/notes',
-      headers: {'authorization': basicAuth}, body: {'content': content});
+  post(nxadress + '/index.php/apps/notes/api/v0.2/notes',
+      headers: {'authorization': basicAuth}, body: {'content': content}).then((value) {
+        var decoded = json.decode(value.body);
+        note.id = decoded["id"];
+        print(note.id);
+        print("NOTE ID");
+        NotesDatabaseService.db.updateNoteInDB(note);
+      });
 }
 
 void deleteNote(noteId) async {
@@ -59,9 +67,10 @@ void deleteNote(noteId) async {
   String basicAuth =
       'Basic ' + base64Encode(utf8.encode('$username:$password'));
   print("DELETING");
-  print(noteId);
+  noteId = noteId.toString();
+  print(noteId);  
   await delete(
-      nxadress + '/index.php/apps/notes/api/v0.2/notes' + noteId.toString(),
+      nxadress + '/index.php/apps/notes/api/v0.2/notes/' + noteId,
       headers: {'authorization': basicAuth});
 }
 
@@ -76,6 +85,7 @@ void updateNote(note) async {
   String content = note.title + '\n' + note.content;
   print("pushing");
   print(content);
-  await put(nxadress + '/index.php/apps/notes/api/v0.2/notes/' + noteId,
+  await put(
+      nxadress + '/index.php/apps/notes/api/v0.2/notes/' + noteId,
       headers: {'authorization': basicAuth}, body: {"content": content});
 }

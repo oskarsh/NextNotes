@@ -4,7 +4,7 @@
 // DESCRIPTION:  
 
 import 'dart:ui';
-
+import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:async';
@@ -185,12 +185,15 @@ class _EditNotePageState extends State<EditNotePage> {
       print('Hey there ${currentNote.content}');
     });
     if (isNoteNew) {
-      var latestNote = await NotesDatabaseService.db.addNoteInDB(currentNote);
+      currentNote.id = Random(10).nextInt(1000) + 1;
+      NotesDatabaseService.db.addNoteInDB(currentNote).then((latestNote) {
       // api call to nextcloud server
-      createNewNote(currentNote);
+      createNewNote(latestNote);
       setState(() {
         currentNote = latestNote;
       });
+      });
+
     } else {
       updateNote(currentNote);
       await NotesDatabaseService.db.updateNoteInDB(currentNote);

@@ -44,7 +44,7 @@ class _SplashState extends State<Splash> {
   Widget _loadingView(context) {
     if (_isLoading) {
       return (Column(children: <Widget>[
-        
+        Text("Syncing with Nextcloud this can take up to minute"),
         SpinKitFoldingCube(
           color: Theme.of(context).primaryColor,
           size: 100.0,
