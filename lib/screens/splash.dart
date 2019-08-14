@@ -53,7 +53,7 @@ class _SplashState extends State<Splash> {
     } else {
       return (Container(
           alignment: Alignment.center,
-          color: Colors.green,
+          color: Theme.of(context).backgroundColor,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -61,7 +61,7 @@ class _SplashState extends State<Splash> {
                   alignment: Alignment.center,
                   child: Text(
                     "NextNotes is now fully synced, \n go ahead and explore the App",
-                    style: TextStyle(fontFamily: "ZillaSlab"),
+                    style: TextStyle(fontFamily: "ZillaSlab", color: Theme.of(context).primaryTextTheme.body1.color),
                   )),
               Material(
                 elevation: 18.0,
