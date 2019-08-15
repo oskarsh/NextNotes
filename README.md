@@ -2,7 +2,7 @@
   <img alt="NextNotes" title="NextNotes" src="./github_assets/nextnotesicon.png" height="150">
 
 
-
+<h1 align="center"> This is a Alpha and not yet fully usable </h1> <br>
 <h1 align="center"> NextNotes </h1> <br>
 <p align="center">
    A free, open-source notes app that syncs with Nextcloud Notes
