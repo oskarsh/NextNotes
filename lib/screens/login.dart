@@ -124,7 +124,7 @@ class _LoginState extends State<Login> {
     @override
     Widget build(BuildContext context) {
       TextStyle style = TextStyle(
-          fontFamily: 'ZillaSlab', fontSize: 20.0, color: Theme.of(context).backgroundColor);
+          fontFamily: 'ZillaSlab', fontSize: 20.0, color: Theme.of(context).primaryTextTheme.body1.color);
 
       final usernameField = TextField(
         obscureText: false,

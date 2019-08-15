@@ -62,9 +62,10 @@ class _SplashState extends State<Splash> {
             children: <Widget>[
               Container(
                   alignment: Alignment.center,
+                  padding: EdgeInsets.all(20),
                   child: Text(
                     "NextNotes is now fully synced, \n go ahead and explore the App",
-                    style: TextStyle(fontFamily: "ZillaSlab", color: Theme.of(context).primaryTextTheme.body1.color),
+                    style: TextStyle(fontSize: 16.0 ,fontFamily: "ZillaSlab", color: Theme.of(context).primaryTextTheme.body1.color),
                   )),
               Material(
                 elevation: 18.0,
@@ -78,7 +79,7 @@ class _SplashState extends State<Splash> {
                   color: Theme.of(context).primaryColor,
                   child: new Text('Explore the App',
                       style:
-                          new TextStyle(fontSize: 16.0, color: Theme.of(context).primaryTextTheme.button.color)),
+                          new TextStyle(fontSize: 16.0, color: Theme.of(context).backgroundColor)),
                   onPressed: () {
                     Navigator.push(
                         context,
