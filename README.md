@@ -1,6 +1,8 @@
+<h1 align="center"> This is a Alpha and not yet fully usable </h1> 
+
+
 <p align="center">
   <img alt="NextNotes" title="NextNotes" src="./github_assets/nextnotesicon.png" height="150">
-
 
 
 <h1 align="center"> NextNotes </h1> <br>
@@ -17,10 +19,10 @@
 
 <p align="center">
 	    <img alt="" title="NextNotes" src="./github_assets/home.jpg" width="300">
-	    <img alt="" title="NextNotes" src="./github_assets/emoji.jpg" width="300">
+	    <img alt="" title="NextNotes" src="./github_assets/emoji.jpg" width="300"> <br><br><br>
 <p align="center">
   			<a href="https://github.com/daehruoydeef/NextNotes/releases">
-	    <img alt="" title="NextNotes" src="https://img.shields.io/badge/-Download%20for%20Android-blue?style=for-the-badge&logo=android" height="30"><a/>
+	    <img alt="" title="NextNotes" src="https://img.shields.io/badge/-Download%20for%20Android-blue?style=for-the-badge&logo=android" height="35"><a/><br><br><br>
 
 
 ## Features
@@ -32,6 +34,12 @@
 * delete Notes
 * mark note as Favourite
 
+## Roadmap
+
+* add Markdown for Preview
+* implement categories
+* add Password field autofill in
+* add Splashscreen animation
 
 ## Contribution
 
@@ -43,9 +51,7 @@
 
 * make changes to code
 
-* Pull request ;)
-
-## Donation
+* Pull request 
 
 
 ## Credit
