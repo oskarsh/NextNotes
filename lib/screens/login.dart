@@ -72,10 +72,8 @@ class _LoginState extends State<Login> {
         children: <Widget>[
           Container(
             height: 30,
-            color: Theme.of(context).backgroundColor,
           ),
           Container(
-            color: Theme.of(context).backgroundColor,
             child: Text(
               "NextNotes",
               textAlign: TextAlign.center,
@@ -92,7 +90,7 @@ class _LoginState extends State<Login> {
               padding: const EdgeInsets.all(30.0),
               margin: const EdgeInsets.all(30.0),
               decoration: new BoxDecoration(
-                color: Theme.of(context).backgroundColor, 
+                color: Theme.of(context).dialogBackgroundColor, 
                 borderRadius: new BorderRadius.all(Radius.circular(10)),
                 boxShadow: [
                   new BoxShadow(
@@ -124,7 +122,7 @@ class _LoginState extends State<Login> {
     @override
     Widget build(BuildContext context) {
       TextStyle style = TextStyle(
-          fontFamily: 'ZillaSlab', fontSize: 20.0, color: Theme.of(context).primaryTextTheme.body1.color);
+          fontFamily: 'ZillaSlab', fontSize: 20.0, color: Theme.of(context).primaryColor);
 
       final usernameField = TextField(
         obscureText: false,
@@ -175,7 +173,7 @@ class _LoginState extends State<Login> {
           child: Text("Login",
               textAlign: TextAlign.center,
               style: style.copyWith(
-                  color: Theme.of(context).backgroundColor, fontWeight: FontWeight.bold)),
+                  color: Theme.of(context).dialogBackgroundColor, fontWeight: FontWeight.bold)),
         ),
       );
 
@@ -189,7 +187,6 @@ class _LoginState extends State<Login> {
       // }
 
       return Scaffold(
-          backgroundColor: Theme.of(context).backgroundColor,
           body: Center(
               child: _showAuthOrApp(context, usernameField, passwordField,
                   nextcloudAdressField, loginButton)));

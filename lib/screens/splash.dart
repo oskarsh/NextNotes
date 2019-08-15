@@ -45,9 +45,11 @@ class _SplashState extends State<Splash> {
     if (_isLoading) {
       return (Container
       (
+        color: Theme.of(context).dialogBackgroundColor,
         alignment: Alignment.center,
-        child: Column(children: <Widget>[
-        Text("Syncing with Nextcloud this can take up to minute"),
+        child: Column(mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+        Text("Syncing with Nextcloud this can take up to minute", style: TextStyle(fontSize: 16.0),),
         SpinKitFoldingCube(
           color: Theme.of(context).primaryColor,
           size: 100.0,
@@ -56,7 +58,7 @@ class _SplashState extends State<Splash> {
     } else {
       return (Container(
           alignment: Alignment.center,
-          color: Theme.of(context).backgroundColor,
+          color: Theme.of(context).dialogBackgroundColor,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -65,7 +67,7 @@ class _SplashState extends State<Splash> {
                   padding: EdgeInsets.all(20),
                   child: Text(
                     "NextNotes is now fully synced, \n go ahead and explore the App",
-                    style: TextStyle(fontSize: 16.0 ,fontFamily: "ZillaSlab", color: Theme.of(context).primaryTextTheme.body1.color),
+                    style: TextStyle(fontSize: 16.0 ,fontFamily: "ZillaSlab"),
                   )),
               Material(
                 elevation: 18.0,
@@ -79,7 +81,7 @@ class _SplashState extends State<Splash> {
                   color: Theme.of(context).primaryColor,
                   child: new Text('Explore the App',
                       style:
-                          new TextStyle(fontSize: 16.0, color: Theme.of(context).backgroundColor)),
+                          new TextStyle(fontSize: 16.0, color: Theme.of(context).dialogBackgroundColor)),
                   onPressed: () {
                     Navigator.push(
                         context,
