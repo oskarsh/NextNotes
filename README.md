@@ -34,6 +34,12 @@
 * delete Notes
 * mark note as Favourite
 
+## Roadmap
+
+* add Markdown for Preview
+* implement categories
+* add Password field autofill in
+* add Splashscreen animation
 
 ## Contribution
 
