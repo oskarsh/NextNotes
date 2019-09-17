@@ -185,8 +185,9 @@ class _EditNotePageState extends State<EditNotePage> {
       print('Hey there ${currentNote.content}');
     });
     if (isNoteNew) {
-      currentNote.id = Random(10).nextInt(1000) + 1;
-      NotesDatabaseService.db.addNoteInDB(currentNote).then((latestNote) {
+      currentNote.id = Random().nextInt(1000);
+      print("RANDOM ID: " + currentNote.id.toString());
+      NotesDatabaseService.db.addNoteInDBWithId(currentNote).then((latestNote) {
       // api call to nextcloud server
       createNewNote(latestNote);
       setState(() {
@@ -247,6 +248,7 @@ class _EditNotePageState extends State<EditNotePage> {
                           letterSpacing: 1)),
                   onPressed: () async {
                     await NotesDatabaseService.db.deleteNoteInDB(currentNote);
+                    await deleteNote(currentNote.id);
                     widget.triggerRefetch();
                     Navigator.pop(context);
                     Navigator.pop(context);

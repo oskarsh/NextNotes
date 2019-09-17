@@ -8,11 +8,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
-import "./login.dart";
+import 'package:notes/services/notesService.dart';
+import 'package:notes/services/database.dart';
 import 'package:notes/services/sharedPref.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:notes/services/database.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -106,9 +106,43 @@ class _SettingsPageState extends State<SettingsPage> {
                               padding:
                                   EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                               color: Theme.of(context).primaryColor,
+                              child: new Text('Sync',
+                                  style: new TextStyle(
+                                      fontSize: 16.0,
+                                      color: Theme.of(context)
+                                          .dialogBackgroundColor)),
+                              onPressed: () async {
+                                
+                                await fetchNotes().then((notes) {
+                                  if (notes != null) {
+                                    print(notes);
+                                    NotesDatabaseService.db.flushDb();
+                                    for (var note in notes) {
+                                      NotesDatabaseService.db
+                                          .addNoteInDBWithId(note);
+                                    }
+                                  }
+                                });
+                              }))),
+                  Container(
+                      width: 500,
+                      margin: const EdgeInsets.only(top: 10),
+                      child: Material(
+                          elevation: 18.0,
+                          borderRadius: BorderRadius.circular(30.0),
+                          color: Theme.of(context).primaryColor,
+                          clipBehavior: Clip.antiAlias, // Add This
+                          child: MaterialButton(
+                              minWidth: 200.0,
+                              height: 35,
+                              padding:
+                                  EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                              color: Theme.of(context).primaryColor,
                               child: new Text('Logout',
                                   style: new TextStyle(
-                                      fontSize: 16.0, color: Theme.of(context).dialogBackgroundColor)),
+                                      fontSize: 16.0,
+                                      color: Theme.of(context)
+                                          .dialogBackgroundColor)),
                               onPressed: () async {
                                 // Create storage
                                 final storage = new FlutterSecureStorage();

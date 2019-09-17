@@ -1,8 +1,7 @@
-
-// ORIGINAL AUTHOR: https://github.com/roshanrahman 
+// ORIGINAL AUTHOR: https://github.com/roshanrahman
 // MODIFIED BY: https://github.com/daehruoydeef
 // LICENSE: Apache-2.0
-// DESCRIPTION:  
+// DESCRIPTION:
 
 import 'dart:async';
 
@@ -14,6 +13,8 @@ import 'package:notes/data/models.dart';
 import 'package:notes/screens/edit.dart';
 import 'package:notes/screens/view.dart';
 import 'package:notes/services/database.dart';
+import 'package:notes/services/notesService.dart';
+import 'package:notes/services/offlineService.dart';
 import 'settings.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import '../components/cards.dart';
@@ -24,7 +25,6 @@ class MyHomePage extends StatefulWidget {
       : super(key: key) {
     this.changeTheme = changeTheme;
   }
-
 
   final String title;
   @override
@@ -39,8 +39,15 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isSearchEmpty = true;
 
   @override
+  didChangeDependencies() {
+    print("did change called");
+    refetchNotesFromDB();
+  }
+
+  @override
   void initState() {
     super.initState();
+    OfflineService();
     setNotesFromDB();
   }
 
@@ -193,6 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
   Widget buildHeaderWidget(BuildContext context) {
     return Row(
       children: <Widget>[
@@ -301,9 +309,18 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void refetchNotesFromDB() async {
+    // await fetchNotes().then((notes) {
+    //   if (notes != null) {
+    //     NotesDatabaseService.db.flushDb();
+    //     for (var note in notes) {
+    //       NotesDatabaseService.db.addNoteInDBWithId(note);
+    //     }
+    //   }
+    // });
     await setNotesFromDB();
-    print("Refetched notes");
   }
+
+  void syncNextCloud() async {}
 
   openNoteToRead(NotesModel noteData) async {
     setState(() {

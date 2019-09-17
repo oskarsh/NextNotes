@@ -51,6 +51,7 @@ class NotesDatabaseService {
   }
 
     Future<List<NotesModel>> getNoteWithId(noteId) async {
+  
     final db = await database;
     List<NotesModel> notesList = [];
     List<Map> maps = await db.query('Notes', where: '_id = ?', whereArgs: [noteId],

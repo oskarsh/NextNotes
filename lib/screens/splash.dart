@@ -4,6 +4,7 @@ import './home.dart';
 import 'package:notes/services/notesService.dart';
 import 'package:notes/services/database.dart';
 import "./home.dart";
+import '../services//offlineService.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Splash extends StatefulWidget {

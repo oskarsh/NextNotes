@@ -11,7 +11,7 @@ import 'screens/login.dart';
 import 'screens/splash.dart';
 import 'screens/settings.dart';
 import 'data/theme.dart';
-
+import 'services/sharedPref.dart';
 
 void main() => runApp(MyApp());
 
