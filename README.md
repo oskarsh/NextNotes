@@ -22,7 +22,7 @@
 
 
 
-## Features
+## 🎁 Features 
 
 * Out of the Box Nextcloud Notes Sync
 * Dark / Light Theme
@@ -31,14 +31,14 @@
 * delete Notes
 * mark note as Favourite
 
-##  Roadmap
+## 🗺 Roadmap 
 
 * add Markdown for Preview
 * implement categories
 * add Password field autofill in
 * add Splashscreen animation
 
-## Contribution
+## 🙌 Contribution 
 
 * Fork this Project
 
@@ -51,7 +51,7 @@
 * Pull request 
 
 
-## Credit
+## 🙏 Credit 
 Thanks to [roshanrahman](https://github.com/roshanrahman) and his [Flutter Notes UI](https://github.com/roshanrahman/flutter-notes-app) for the inspiration and original design.
 
   
