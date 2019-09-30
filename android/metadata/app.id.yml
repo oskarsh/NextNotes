@@ -1,0 +1,35 @@
+Categories:
+  - (use those which apply) - Connectivity - Development - Reading - System - Writing
+License: Apache-2.0
+SourceCode: https://github.com/daehruoydeef/NextNotes
+IssueTracker: https://github.com/daehruoydeef/NextNotes/issues
+LiberapayID: '1577341'
+
+Summary: (A free, modern notes app that syncs with Nextcloud Notes)
+Description: |4-
+
+    NextNotes is a modern Note taking App that syncs with Nextcloud Notes.
+    It features Offline support, a dark theme and basic Note taking functionality.
+
+    Features
+    * Out of the Box Nextcloud Notes Sync
+    * Dark / Light Theme
+    * add Notes
+    * edit and update Notes
+    * delete Notes
+    * mark note as Favourite
+
+RepoType: git
+Repo: https://github.com/daehruoydeef/NextNotes
+
+Builds:
+  - versionName: '1.0'
+    versionCode: 1
+    commit: v1.0
+    subdir: app
+    gradle:
+      - yes
+    output: NextNotes.apk
+
+AutoUpdateMode: None
+UpdateCheckMode: None
