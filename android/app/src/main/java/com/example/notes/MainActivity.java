@@ -1,4 +1,4 @@
-package com.example.notes;
+package com.daehruoydeef.nextnotes;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
